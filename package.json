@@ -1,0 +1,12 @@
+{
+  "name": "springboot-pubsub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "curl_send_message_hello": "curl -H \"Content-Type: application/json\" -d \"Hello this is a test from Mike\"  localhost:8080/send/",
+    "curl_send_ship": "curl -H \"Content-Type: application/json\" -d @./payloads/spaceship1.json  localhost:8080/send/"
+  },
+  "author": "",
+  "license": "ISC"
+}
