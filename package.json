@@ -4,6 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "google_login": "glcoud auth login",
+    "set_google_project": "gcloud config set project mikes-demo",
+    "docker_login": "cat /gcp_service_account_key.json | docker login -u _json_key --password-stdin https://europe-central2-docker.pkg.dev",
+    "docker_build":"docker build -t europe-central2-docker.pkg.dev/mikes-demo/docker-registry/mikes-demo-app:latest .",
+    "docker_push":"docker push europe-central2-docker.pkg.dev/mikes-demo/docker-registry/mikes-demo-app:latest",
     "curl_send_message_hello": "curl -H \"Content-Type: application/json\" -d \"Hello this is a test from Mike\"  localhost:8080/send/",
     "curl_send_ship": "curl -H \"Content-Type: application/json\" -d @./payloads/spaceship1.json  localhost:8080/send/"
   },
