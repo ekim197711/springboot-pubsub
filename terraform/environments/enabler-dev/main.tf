@@ -4,4 +4,3 @@ module "enabler" {
   region       = local.region
   environment  = local.environment
 }
-

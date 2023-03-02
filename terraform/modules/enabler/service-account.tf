@@ -15,3 +15,7 @@ resource "google_project_iam_member" "application-account-roles" {
   role    = each.key
   member  = "serviceAccount:${google_service_account.application-account.account_id}@${var.project_name}.iam.gserviceaccount.com"
 }
+
+output "service_account_email" {
+  value = google_service_account.application-account.email
+}
