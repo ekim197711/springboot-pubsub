@@ -24,7 +24,8 @@ provider "google-beta" {
 }
 terraform {
   backend "gcs" {
-    path = ""
+    bucket = "mikes-demo-mikes-demo-bucket"
+    prefix = "terraform/state"
   }
 }
 provider "random" {

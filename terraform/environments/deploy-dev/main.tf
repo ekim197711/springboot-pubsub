@@ -1,17 +1,20 @@
-module "enabler" {
-  source       = "../../modules/enabler"
+
+module "gatewayloadbalancer" {
+  depends_on = [module.deploy]
+  source       = "../../modules/gatewayloadbalancer"
   project_name = local.project_name
   region       = local.region
-  environment  = local.environment
-
+  openapi_template_vars = {
+    project_name    = local.project_name
+    backend_address = "somebackend"
+  }
 }
 
+
 module "deploy" {
-  depends_on = [module.enabler]
   source       = "../../modules/deploy"
   project_name = local.project_name
   region       = local.region
-  environment  = local.environment
-  service_account_email = module.enabler.service_account_email
+  service_account_email =" mikes-demo@mikes-demo.iam.gserviceaccount.com"
 }
 

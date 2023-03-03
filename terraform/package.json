@@ -4,9 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "google_login": "glcoud auth login",
+    "google_default_login": "gcloud auth application-default login",
+    "google_login": "gcloud auth login",
+    "google_logout": "gcloud auth revoke",
+    "google_logout_rentokil": "gcloud auth revoke mike.nielsen@rentokil-initial.com",
+    "google_list": "gcloud auth list",
     "set_google_project": "gcloud config set project mikes-demo",
-
+    "tf_enabler_init": "cd environments/enabler-dev && terraform init",
+    "tf_enabler_apply": "cd environments/enabler-dev && terraform apply -auto-approve",
+    "tf_deploy_init": "cd environments/deploy-dev && terraform init",
+    "tf_deploy_apply": "cd environments/deploy-dev && terraform apply -auto-approve",
     "create_bucket": "terraform apply --target modules.enabler.google_storage_bucket.mikes-bucket",
     "create_registry": "terraform apply --target modules.enabler.google_artifact_registry_repository.docker-registry",
     "docker_login": "cat /gcp_service_account_key.json | docker login -u _json_key --password-stdin https://europe-central2-docker.pkg.dev",

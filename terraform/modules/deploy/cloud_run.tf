@@ -17,7 +17,7 @@ resource "google_cloud_run_service" "mikes-cloud-run" {
 #      service_account_name = "mikes-cloud-run-engine@${var.project_name}.iam.gserviceaccount.com"
       service_account_name = var.service_account_email
       containers {
-        image = "${var.region}-docker.pkg.dev/${var.project_name}/${google_artifact_registry_repository.docker-registry.repository_id}/${docker_image.mikes-demo-pubsub.name}"
+        image = "${var.region}-docker.pkg.dev/${var.project_name}/docker-registry/mikesdemo:latest"
         resources {
           limits = {
             memory = "1536Mi"

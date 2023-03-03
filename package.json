@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "google_login": "glcoud auth login",
+    "google_login": "gcloud auth login",
     "set_google_project": "gcloud config set project mikes-demo",
 
     "create_bucket": "terraform apply --target modules.enabler.google_storage_bucket.mikes-bucket",
