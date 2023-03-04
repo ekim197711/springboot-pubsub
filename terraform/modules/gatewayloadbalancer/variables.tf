@@ -17,5 +17,8 @@ variable "openapi_template_vars" {
     backend_address = string
   })
 }
+variable "managed_ssl_certificate_domain" {
+  description = "Create Google-managed SSL certificates for specified domains. Requires `ssl` to be set to `true` and `use_ssl_certificates` set to `false`."
+  type        = string
 
-#
+}

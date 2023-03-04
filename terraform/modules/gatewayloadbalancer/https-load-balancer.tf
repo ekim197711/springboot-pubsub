@@ -1,13 +1,3 @@
-data "google_secret_manager_secret_version" "certificate" {
-  project = var.shared_mgmt_project
-  secret  = var.certificate_secret
-}
-
-data "google_secret_manager_secret_version" "private_key" {
-  project = var.shared_mgmt_project
-  secret  = var.private_key_secret
-}
-
 resource "google_compute_global_forwarding_rule" "this" {
   provider   = google-beta
   project    = var.project_name
@@ -35,16 +25,6 @@ resource "google_compute_target_https_proxy" "https_proxy" {
   quic_override    = "NONE"
 }
 
-#resource "google_compute_ssl_certificate" "ssl_certificate" {
-#  project     = var.project_name
-#  name_prefix = "${var.name_prefix}-cert-"
-#  certificate = data.google_secret_manager_secret_version.certificate.secret_data
-#  private_key = data.google_secret_manager_secret_version.private_key.secret_data
-#
-#  lifecycle {
-#    create_before_destroy = true
-#  }
-#}
 
 resource "google_compute_managed_ssl_certificate" "managed_cert" {
   name = "managed-cert-${random_id.id.hex}"
