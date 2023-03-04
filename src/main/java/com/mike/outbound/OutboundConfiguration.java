@@ -1,10 +1,8 @@
-package com.example.springbootpubsub.outbound;
+package com.mike.outbound;
 
-import com.example.springbootpubsub.config.PubSubConfiguration;
+import com.mike.config.PubSubConfiguration;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.gcp.pubsub.core.PubSubTemplate;
-import org.springframework.cloud.gcp.pubsub.core.publisher.PubSubPublisherTemplate;
-import org.springframework.cloud.gcp.pubsub.core.subscriber.PubSubSubscriberTemplate;
 import org.springframework.cloud.gcp.pubsub.integration.outbound.PubSubMessageHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

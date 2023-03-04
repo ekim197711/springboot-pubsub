@@ -1,6 +1,6 @@
-package com.example.springbootpubsub.inbound;
+package com.mike.inbound;
 
-import com.example.springbootpubsub.config.PubSubConfiguration;
+import com.mike.config.PubSubConfiguration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -30,7 +30,7 @@ resource "google_cloud_run_service" "mikes-cloud-run" {
         }
         env {
           name  = "SPRING_PROFILES_ACTIVE"
-          value = "default"
+          value = "dev"
         }
       }
     }

@@ -73,11 +73,11 @@ resource "google_compute_url_map" "url_map" {
 
   host_rule {
     hosts        = [var.managed_ssl_certificate_domain]
-    path_matcher = "cdir-apps"
+    path_matcher = "mikes-demo"
   }
 
   path_matcher {
-    name            = "cdir-apps"
+    name            = "mikes-demo"
     default_service = google_compute_backend_service.backend_service_api_gateway.id
 
     dynamic "path_rule" {

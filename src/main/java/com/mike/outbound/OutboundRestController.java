@@ -1,4 +1,4 @@
-package com.example.springbootpubsub.outbound;
+package com.mike.outbound;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

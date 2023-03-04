@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
-  title: connect-device-ingestion-run-api
-  description: connect-device-ingestion-run connection from IPM
+  title: Mikes demo
+  description: Demo api gateway
   version: 1.0.0
 x-google-backend:
   address: ${backend_address}
@@ -77,4 +77,4 @@ securityDefinitions:
     x-google-issuer: demo-app-client@${project_name}.iam.gserviceaccount.com
     x-google-audiences: ${project_name}
     x-google-jwks_uri: >-
-      https://www.googleapis.com/service_accounts/v1/jwk/cdir-client@${project_name}.iam.gserviceaccount.com
+      https://www.googleapis.com/service_accounts/v1/jwk/mikes-demo@${project_name}.iam.gserviceaccount.com

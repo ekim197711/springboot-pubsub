@@ -1,5 +1,5 @@
-resource "google_pubsub_topic" "topic_demo_inbox" {
-  name = "demo_inbox"
+resource "google_pubsub_topic" "spaceship" {
+  name = "spaceship"
   labels = {
     purpose = "development"
   }
@@ -9,9 +9,9 @@ resource "google_pubsub_topic" "topic_demo_inbox" {
   }
 }
 
-resource "google_pubsub_subscription" "subscription_demo_inbox" {
-  name  = "demo_inbox"
-  topic = google_pubsub_topic.topic_demo_inbox.name
+resource "google_pubsub_subscription" "spaceship" {
+  name  = "spaceship"
+  topic = google_pubsub_topic.spaceship.name
   labels = {
     purpose = "development"
   }

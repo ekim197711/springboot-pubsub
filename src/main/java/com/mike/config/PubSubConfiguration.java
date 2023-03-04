@@ -1,4 +1,4 @@
-package com.example.springbootpubsub.config;
+package com.mike.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

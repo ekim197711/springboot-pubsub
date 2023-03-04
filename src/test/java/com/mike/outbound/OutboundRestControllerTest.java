@@ -1,12 +1,12 @@
-package com.example.springbootpubsub.outbound;
+package com.mike.outbound;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-
+@ActiveProfiles("local")
 public class OutboundRestControllerTest {
 
     @Autowired
