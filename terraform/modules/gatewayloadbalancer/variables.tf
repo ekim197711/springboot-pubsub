@@ -8,6 +8,9 @@ variable "region" {
 variable "location" {
   type = string
 }
+variable "api_gateway_service" {
+  type = string
+}
 
 variable "backend_address" {
   type    = string

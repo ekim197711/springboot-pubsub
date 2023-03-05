@@ -17,7 +17,7 @@ resource "google_compute_global_address" "global_address" {
 resource "google_compute_target_https_proxy" "https_proxy" {
   project = var.project_name
   name    = "demo-https-proxy"
-  url_map = google_compute_url_map.url_map.self_link
+  url_map = google_compute_url_map.url_map_other.self_link
 
   #  ssl_certificates = [google_compute_ssl_certificate.ssl_certificate.self_link]
   ssl_certificates = [google_compute_managed_ssl_certificate.managed_cert.self_link]
@@ -45,10 +45,10 @@ resource "random_id" "id" {
   byte_length = 4
 }
 
-resource "google_compute_url_map" "url_map" {
+resource "google_compute_url_map" "url_map_other" {
   project         = var.project_name
-  name            = "demo-url-map-${random_id.id.hex}"
-  default_service = google_api_gateway_gateway.demo_gateway_gateway.id
+  name            = "url-map-demo"
+  default_service = google_compute_backend_service.backend_service_api_gateway.id
 
   host_rule {
     hosts        = [var.managed_ssl_certificate_domain]
@@ -57,13 +57,13 @@ resource "google_compute_url_map" "url_map" {
 
   path_matcher {
     name            = "mikes-demo"
-    default_service = google_api_gateway_gateway.demo_gateway_gateway.id
+    default_service = google_compute_backend_service.backend_service_api_gateway.id
 
     dynamic "path_rule" {
       for_each = ["mikesdemo"]
       content {
         paths   = ["/${path_rule.key}/*"]
-        service = google_api_gateway_gateway.demo_gateway_gateway.id
+        service = google_compute_backend_service.backend_service_api_gateway.id
         route_action {
           url_rewrite {
             path_prefix_rewrite = "/"
@@ -75,4 +75,26 @@ resource "google_compute_url_map" "url_map" {
   lifecycle {
     create_before_destroy = true
   }
+}
+
+resource "google_compute_backend_service" "backend_service_api_gateway" {
+  provider = google-beta
+
+  project = var.project_name
+  name    = "${var.api_gateway_service}"
+
+
+  description                     = "api_gateway"
+  connection_draining_timeout_sec = 10
+  enable_cdn                      = false
+  custom_request_headers          = []
+  custom_response_headers         = []
+  log_config {
+    enable      = true
+    sample_rate = 1.0
+  }
+
+  # To achieve a null backend security_policy, set each.value.security_policy to "" (empty string), otherwise, it fallsback to var.security_policy.
+  security_policy = ""
+
 }

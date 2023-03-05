@@ -15,13 +15,15 @@
     "tf_deploy_apply": "cd environments/deploy-dev && terraform apply -auto-approve",
     "tf_loadbalancer_init": "cd environments/loadbalancer-dev && terraform init",
     "tf_loadbalancer_apply": "cd environments/loadbalancer-dev && terraform apply -auto-approve",
+    "tf_loadbalancer_refresh": "cd environments/loadbalancer-dev && terraform refresh",
     "tf_apigateway_init": "cd environments/apigateway-dev && terraform init",
     "tf_apigateway_apply": "cd environments/apigateway-dev && terraform apply -auto-approve",
     "tf_deploy_destroy": "cd environments/deploy-dev && terraform destroy -auto-approve",
     "tf_import_apigateway": "cd environments/apigateway-dev && terraform import module.apigateway.google_api_gateway_api.demo_api_gateway_api demo-api-gateway",
     "tf_import_apigateway_serviceaccount": "cd environments/apigateway-dev && terraform import module.apigateway.google_service_account.demo_api_gateway 117483691324844726731",
     "tf_import_apigateway_gateway": "cd environments/apigateway-dev && terraform import module.apigateway.google_api_gateway_gateway.demo_gateway_gateway demo-api-gw",
-    "tf_import": "cd environments/deploy-dev && terraform import module.gatewayloadbalancer.google_compute_global_address.global_address demo-address"
+    "tf_import_lb_address": "cd environments/loadbalancer-dev && terraform import module.gatewayloadbalancer.google_compute_global_address.global_address demo-address",
+    "tf_import_lb_urlmap": "cd environments/loadbalancer-dev && terraform import module.gatewayloadbalancer.google_compute_url_map.url_map demo-url-map"
      },
   "author": "",
   "license": "ISC"
