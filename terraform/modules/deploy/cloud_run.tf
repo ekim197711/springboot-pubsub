@@ -1,5 +1,5 @@
-resource "google_cloud_run_service" "mikes-cloud-run" {
-  name                       = "mikes-cloud-run"
+resource "google_cloud_run_service" "cr" {
+  name                       = "mikesapp"
   location                   = var.region
   autogenerate_revision_name = true
   timeouts {
@@ -14,10 +14,9 @@ resource "google_cloud_run_service" "mikes-cloud-run" {
       }
     }
     spec {
-#      service_account_name = "mikes-cloud-run-engine@${var.project_name}.iam.gserviceaccount.com"
-      service_account_name = var.service_account_email
+      service_account_name = "${var.service_account_email}"
       containers {
-        image = "europe-central2-docker.pkg.dev/mikes-demo/docker-registry/mikes-demo-app:latest"
+        image = "${var.region}-docker.pkg.dev/${var.project_name}/docker-registry/mikes-demo-app:latest"
         resources {
           limits = {
             memory = "1536Mi"

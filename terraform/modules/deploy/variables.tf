@@ -5,6 +5,9 @@ variable "project_name" {
 variable "region" {
   type = string
 }
+variable "location" {
+  type = string
+}
 
 variable "service_account_email" {
   type = string

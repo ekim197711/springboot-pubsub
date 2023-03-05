@@ -5,7 +5,7 @@ resource "google_pubsub_topic" "spaceship" {
   }
   message_retention_duration = "86600s"
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
@@ -26,7 +26,7 @@ resource "google_pubsub_subscription" "spaceship" {
     minimum_backoff = "10s"
   }
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
   enable_message_ordering    = false
 }
